@@ -34,4 +34,13 @@ router.post('/google', googleAuth);
 
 router.get('/renew', validarJWT, renewToken);
 
+router.get('/test', async (req, res = response) => {
+    console.log('====== Le dió al test XD');
+
+    return res.status(200).json({
+        ok: true,
+        msg: 'Todo bien',
+    });
+});
+
 module.exports = router;
