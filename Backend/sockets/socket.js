@@ -39,7 +39,12 @@ io.on('connection', client => {
         console.log('Cliente desconectado');
     });
 
-    client.emit('Mando Algo', console.log('Mando Algo'));
+    client.emit('Mando Algo', async (payload) => {
+                console.log('Mando Algo');
+            });
 
-    client.on('Mando Algo', console.log('Recibo Algo'));
+    client.on('Mando Algo', async (payload) => {
+        console.log('Recibo Algoooooo');
+        io.emit('Beto Puto', payload);
+    });
 });
