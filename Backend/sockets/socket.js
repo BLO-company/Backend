@@ -29,3 +29,17 @@
 //         console.log('Cliente desconectado');
 //     });
 // });
+
+const {io} = require('../index');
+
+// Mensajes de Sockets
+io.on('connection', client => {
+    console.log('Cliente conectado');
+    client.on('disconnect', () => {
+        console.log('Cliente desconectado');
+    });
+
+    client.emit('Mando Algo', console.log('Mando Algo'));
+
+    client.on('Mando Algo', console.log('Recibo Algo'));
+});
